@@ -1,2 +1,4 @@
 ^lcutils\.Rproj$
 ^\.Rproj\.user$
+^doc$
+^Meta$
