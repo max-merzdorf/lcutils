@@ -1,6 +1,9 @@
 # lcutils Package
 
 This package provides utilities for land cover/spatial data analysis.  
-Check out our vignette for a detailed usage guide:
 
-[Using lcutils functions](https://github.com/max-merzdorf/lcutils/blob/master/vignettes/lcutils_guide.Rmd)
+Install the package by using `devtools::install_github("max-merzdorf/lcutils")`
+
+You can access example data via `system.file("extdata", "filename.end", package = lcutils)`
+
+[Visit the github pages for a more detailed walkthrough of the function](https://max-merzdorf.github.io/lcutils/)
