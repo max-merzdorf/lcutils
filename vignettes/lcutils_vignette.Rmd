@@ -95,6 +95,39 @@ diagrams <- alluvial_pairs_diagram(raster = rstack, lookup = lut)
 plot(diagrams[[1]])
 ```
 
+## Using the package example data:
+
+3 sample land cover classification rasters (Landsat-5) from Akagera National Park, Rwanda, as well as a corresponding lookup table are included in the package so you can try out the workflow without much setup:
+
+```{r, warning=FALSE}
+library(terra) # As lcutils functions themselves do not use terra::rast() we have to import it here
+
+# get the file paths:
+p1 <- system.file("extdata", "akagera1987.tif", package = "lcutils")
+p2 <- system.file("extdata", "akagera2001.tif", package = "lcutils")
+p3 <- system.file("extdata", "akagera2002.tif", package = "lcutils")
+plut <- system.file("extdata", "akagera_LUT.csv", package = "lcutils")
+
+# load the data:
+rstack <- terra::rast(c(p1,p2,p3))
+lut <- read.csv(plut)
+lut <- lut[,2:4] # remove index column
+
+# plot the raster for 1987:
+plot(rstack[[1]], col = lut[,3])
+```
+
+```{r, warning=FALSE}
+# create alluvial pair diagrams:
+plots <- alluvial_pairs_diagram(raster = rstack,
+                                         lookup = lut,
+                                         naValue = 9,
+                                         a_unit = "px")
+# time 1 -> time 2:
+plots[[1]]
+# time 2 -> time 3:
+plots[[2]]
+```
 
 ## A note on `rename_shapefile()`
 
