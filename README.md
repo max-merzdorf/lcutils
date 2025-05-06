@@ -6,8 +6,9 @@
 - Then this package is for you
 
 <figure>
-<img src="man/figures/lcutils_meme.png" alt="relevant meme" />
-<figcaption aria-hidden="true">relevant meme</figcaption>
+<img src="man/figures/lcutils_meme.png" style="height:50.0%"
+alt="Relevant meme #1" />
+<figcaption aria-hidden="true">Relevant meme #1</figcaption>
 </figure>
 
 The `alluvial_pairs_diagram()` function is intended for a visually
@@ -50,7 +51,7 @@ plot(t1, main="t1")
 plot(t2, main="t2")
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-1-1.png)![](README_files/figure-gfm/unnamed-chunk-1-2.png)
+<img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="50%" /><img src="README_files/figure-gfm/unnamed-chunk-1-2.png" width="50%" />
 
 Note that different amounts of classes can occur in each layer, this is
 handled by the function.
@@ -69,7 +70,7 @@ lookup table.
 ``` r
 vals <- unique(as.vector(values(rstack)))
 print(vals)
-#> [1] 4 2 1 3 6 5
+#> [1] 4 1 2 3 6 5
 
 lut <- data.frame(id = vals,
                   class = c("Water", "Soil", "Forest", "Grassland", "Agri", "Wetland"),
@@ -77,8 +78,8 @@ lut <- data.frame(id = vals,
 print(lut)
 #>   id     class mycolours
 #> 1  4     Water #440154FF
-#> 2  2      Soil #414487FF
-#> 3  1    Forest #2A788EFF
+#> 2  1      Soil #414487FF
+#> 3  2    Forest #2A788EFF
 #> 4  3 Grassland #22A884FF
 #> 5  6      Agri #7AD151FF
 #> 6  5   Wetland #FDE725FF
@@ -173,14 +174,13 @@ plots <- alluvial_pairs_diagram(raster = rstack,
 plots[[1]]
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-1.png)<!-- -->
+<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" width="50%" />
 
 ``` r
-# time 2 -> time 3:
 plots[[2]]
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-6-2.png)<!-- -->
+<img src="README_files/figure-gfm/unnamed-chunk-6-2.png" width="50%" />
 
 ## A note on `rename_shapefile()`
 
