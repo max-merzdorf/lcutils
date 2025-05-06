@@ -51,7 +51,7 @@ plot(t1, main="t1")
 plot(t2, main="t2")
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-1-1.png" width="50%" /><img src="README_files/figure-gfm/unnamed-chunk-1-2.png" width="50%" />
+<img src="README_files/figure-gfm/create virtual rasters-1.png" width="50%" /><img src="README_files/figure-gfm/create virtual rasters-2.png" width="50%" />
 
 Note that different amounts of classes can occur in each layer, this is
 handled by the function.
@@ -70,17 +70,17 @@ lookup table.
 ``` r
 vals <- unique(as.vector(values(rstack)))
 print(vals)
-#> [1] 4 1 2 3 6 5
+#> [1] 3 1 4 2 6 5
 
 lut <- data.frame(id = vals,
                   class = c("Water", "Soil", "Forest", "Grassland", "Agri", "Wetland"),
                   mycolours = viridis::viridis(6))
 print(lut)
 #>   id     class mycolours
-#> 1  4     Water #440154FF
+#> 1  3     Water #440154FF
 #> 2  1      Soil #414487FF
-#> 3  2    Forest #2A788EFF
-#> 4  3 Grassland #22A884FF
+#> 3  4    Forest #2A788EFF
+#> 4  2 Grassland #22A884FF
 #> 5  6      Agri #7AD151FF
 #> 6  5   Wetland #FDE725FF
 ```
@@ -133,7 +133,7 @@ diagrams <- alluvial_pairs_diagram(raster = rstack, lookup = lut)
 plot(diagrams[[1]])
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-4-1.png)<!-- -->
+![](README_files/figure-gfm/unnamed-chunk-1-1.png)<!-- -->
 
 ## Using the package example data:
 
@@ -160,7 +160,7 @@ lut <- lut[,2:4] # remove index column
 plot(rstack[[1]], col = lut[,3])
 ```
 
-![](README_files/figure-gfm/unnamed-chunk-5-1.png)<!-- -->
+![](README_files/figure-gfm/load%20example%20data-1.png)<!-- -->
 
 ``` r
 # create alluvial pair diagrams:
@@ -170,17 +170,17 @@ plots <- alluvial_pairs_diagram(raster = rstack,
                                          a_unit = "px")
 #> Raster levels set using LUT.
 #> Raster levels set using LUT.
-# time 1 -> time 2:
-plots[[1]]
+
+plot(plots[[1]])
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-6-1.png" width="50%" />
+<img src="README_files/figure-gfm/alluvial pairs example data-1.png" width="50%" />
 
 ``` r
-plots[[2]]
+plot(plots[[2]])
 ```
 
-<img src="README_files/figure-gfm/unnamed-chunk-6-2.png" width="50%" />
+<img src="README_files/figure-gfm/alluvial pairs example data-2.png" width="50%" />
 
 ## A note on `rename_shapefile()`
 

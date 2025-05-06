@@ -40,7 +40,7 @@ The 3 components required to build alluvial pairs are:
 You can either use the example rasters provided in this package using `system.file()`, or create your own arbitrary raster like this:
 (Import `terra` because the `alluvial_pairs_diagram()` imports are specific and it doesn't use `terra::rast()`)
 
-```{r, fig.show='hold', out.width="50%"}
+```{r create virtual rasters, fig.show='hold', out.width="50%"}
 library(terra)
 t1 <- rast(nrows=50, ncols=50)
 values(t1) <- sample(1:4, ncell(t1), replace=TRUE)
@@ -61,7 +61,7 @@ The lookup table is the functions reference to match the correct class ID/raster
 Since this function is aimed at land cover change analysis you probably know which classes (values) occur in your raster and what they are called. If you are unsure you can check this by calling `unique(terra::values(your_raster)` like below.
 Since we have created virtual rasters in the previous step we can now make an imaginative lookup table. 
 
-```{r}
+```{r virtual lookup table}
 vals <- unique(as.vector(values(rstack)))
 print(vals)
 
@@ -82,7 +82,7 @@ If you have `NA` or `NaN` values in your raster, because of non-rectangular geom
 
 **The new NA value must be included in the lookup table** like below:
 
-```{r, eval=FALSE}
+```{r virtual alluvial pair, eval=FALSE}
 new_lut <- data.frame(id = 1:7, # 7 will become NA value!
                   class = c("Water", "Soil", "Forest", "Grassland", "Agri", "Wetland", "NoData"),
                   mycolours = viridis::viridis(7)) # need 7 colours now
@@ -106,7 +106,7 @@ plot(diagrams[[1]])
 
 3 sample land cover classification rasters (Landsat-5) from Akagera National Park, Rwanda, as well as a corresponding lookup table are included in the package so you can try out the workflow without much setup:
 
-```{r, warning=FALSE}
+```{r load example data, warning=FALSE}
 library(terra) # As lcutils functions themselves do not use terra::rast() we have to import it here
 
 # get the file paths:
@@ -124,15 +124,15 @@ lut <- lut[,2:4] # remove index column
 plot(rstack[[1]], col = lut[,3])
 ```
 
-```{r, warning=FALSE, out.width="50%"}
+```{r alluvial pairs example data, warning=FALSE, out.width="50%"}
 # create alluvial pair diagrams:
 plots <- alluvial_pairs_diagram(raster = rstack,
                                          lookup = lut,
                                          naValue = 9,
                                          a_unit = "px")
-# time 1 -> time 2:
-plots[[1]]
-plots[[2]]
+
+plot(plots[[1]])
+plot(plots[[2]])
 ```
 
 ## A note on `rename_shapefile()`
