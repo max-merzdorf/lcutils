@@ -23,7 +23,7 @@ knitr::opts_chunk$set(
 - Have you struggled with coloring ggplot geometries?
 - Then this package is for you
 
-![Relevant meme #1](man/figures/lcutils_meme.png){height=50%}
+![](man/figures/lcutils_meme.png){height=50%, width=50%}
 
 The `alluvial_pairs_diagram()` function is intended for a visually pleasing representation of a from-to relationship of 2 land cover classification maps.
 Crosstables/contingency tables/change matrices can be difficult to interpret and are not intuitive to read. This pairwise alluvial diagram shows how much of a class existed at time t1 and at time t2. It also shows how much of each class changed/transitioned to another. In many cases regarding land cover this can be as relevant as the absolute change, and is often vital to understanding change processes better.
@@ -124,7 +124,7 @@ lut <- lut[,2:4] # remove index column
 plot(rstack[[1]], col = lut[,3])
 ```
 
-```{r alluvial pairs example data, warning=FALSE, out.width="50%"}
+```{r alluvial pairs example data, warning=FALSE, fig.show='hold', out.width="50%"}
 # create alluvial pair diagrams:
 plots <- alluvial_pairs_diagram(raster = rstack,
                                          lookup = lut,

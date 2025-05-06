@@ -5,11 +5,7 @@
 - Have you struggled with coloring ggplot geometries?
 - Then this package is for you
 
-<figure>
-<img src="man/figures/lcutils_meme.png" style="height:50.0%"
-alt="Relevant meme #1" />
-<figcaption aria-hidden="true">Relevant meme #1</figcaption>
-</figure>
+<img src="man/figures/lcutils_meme.png" style="width:50.0%" />
 
 The `alluvial_pairs_diagram()` function is intended for a visually
 pleasing representation of a from-to relationship of 2 land cover
@@ -70,7 +66,7 @@ lookup table.
 ``` r
 vals <- unique(as.vector(values(rstack)))
 print(vals)
-#> [1] 3 1 4 2 6 5
+#> [1] 3 4 2 1 6 5
 
 lut <- data.frame(id = vals,
                   class = c("Water", "Soil", "Forest", "Grassland", "Agri", "Wetland"),
@@ -78,9 +74,9 @@ lut <- data.frame(id = vals,
 print(lut)
 #>   id     class mycolours
 #> 1  3     Water #440154FF
-#> 2  1      Soil #414487FF
-#> 3  4    Forest #2A788EFF
-#> 4  2 Grassland #22A884FF
+#> 2  4      Soil #414487FF
+#> 3  2    Forest #2A788EFF
+#> 4  1 Grassland #22A884FF
 #> 5  6      Agri #7AD151FF
 #> 6  5   Wetland #FDE725FF
 ```
@@ -172,15 +168,10 @@ plots <- alluvial_pairs_diagram(raster = rstack,
 #> Raster levels set using LUT.
 
 plot(plots[[1]])
-```
-
-<img src="README_files/figure-gfm/alluvial pairs example data-1.png" width="50%" />
-
-``` r
 plot(plots[[2]])
 ```
 
-<img src="README_files/figure-gfm/alluvial pairs example data-2.png" width="50%" />
+<img src="README_files/figure-gfm/alluvial pairs example data-1.png" width="50%" /><img src="README_files/figure-gfm/alluvial pairs example data-2.png" width="50%" />
 
 ## A note on `rename_shapefile()`
 
